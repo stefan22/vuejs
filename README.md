@@ -66,6 +66,44 @@
       
 ```
 
+### 2-way data binding - like with angular
+- UI and model
+
+ex:
+   instead of using: =>  v-bind:value="name"
+
+                     =>  v-model="name"
+
+
+- you can add ***modifiers*** into two-way data binding that act like onfocus and
+  onblur events in js (too much data binding could get annoying)
+
+  ex:
+         v-model:value="email"         //this worked for me as well
+
+         v-model="email"               //this supposedly right way
+
+         v-model.lazy="email"          //adding lazy holds on till the onblur
+                                       //event happens before it updates model
+
+
+ex: checkboxes
+
+   assuming something like this:
+
+``` 
+   <input type="checkbox" v-model="selfields" value="Cycling">
+   <input type="checkbox" v-model="selfields" value="Swimming">
+```
+    <p>You've selected: {{selfields.join(', ')}}</p>
+
+    ..and my instance will be an array
+    and
+    lets say I want one or more fields selected, then:
+
+    in my array:
+
+      selfields = ['Cycling', 'Swimming'];
 
 
 

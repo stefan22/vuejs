@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>title</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/vue@2.4.2"></script>
+  </head>
+  <body>  
+      <div id="app">
+          <form method="post" action="/">
+              <label for="email">Email</label>
+              <input type="email" v-model.name="email" placeholder="enter email" 
+                     id="email">
+
+              <fieldset>
+                  <div>
+                      <input type="checkbox" v-model="selfields" value="Running">Running
+                  </div>
+                  <div>
+                      <input type="checkbox" v-model="selfields" value="Cycling">Cycling
+                  </div>
+                  <div>
+                      <input type="checkbox" v-model="selfields" value="Swimming">Swimming
+                  </div>
+              </fieldset>
+              <input type="submit" name="submit" value="submit">
+              <p>You've entered: {{email}}</p>
+
+              <p>You've selected: {{selfields.join(', ')}}</p>
+
+          </form> 
+      </div> <!--/.. app -->
+
+
+
+
+   <script type="text/javascript">
+       //vue instance for div#app
+       var vm = new Vue({              //common name used that stands for view model
+
+                  el:         '#app',
+                  data: {
+                    
+                    email: '',
+                    selfields: []
+
+
+
+               }
+               
+       
+       });   
+
+   </script>
+  </body>
+</html>
