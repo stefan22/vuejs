@@ -25,7 +25,8 @@
 
 > Pages are process top to bottom, so whatever's being mounted needs to come first.
 
-### data binding
+
+### data binding  :violin:
 
 #### dynamic url
 
