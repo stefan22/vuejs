@@ -101,6 +101,7 @@ ex:
    <input type="checkbox" v-model="selfields" value="Cycling">
    <input type="checkbox" v-model="selfields" value="Swimming">
 ```
+
     <p>You've selected: {{selfields.join(', ')}}</p>
 
     ..and my instance will be an array
@@ -108,6 +109,8 @@ ex:
     lets say I want ***one or more fields selected***, then:
 
     in my array:
+ 
+ 
 
 ```
       selfields = ['Cycling', 'Swimming'];
