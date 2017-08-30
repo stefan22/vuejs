@@ -1,4 +1,5 @@
-# vuejs
+# vuejs. :tanabata_tree:
+:statue_of_liberty:vuejs.org
 
 - js framework that offers a progressive approach to solving front-end problems.
 - a sensible alternative to angularjs and react
@@ -10,15 +11,15 @@
 - when need to build more robust/advanced UIs and SPAs, it has plugins for routing,
   state management and a powerful CLI that works with module bundlers like webpack.
 
-  ### changing delimiters
+  ### changing delimiters. :checkered_flag:
 
   ex.
+``` 
       new Vue({
          delimiters: ['${','}']
       })
 
       //delimiters changed to ES6 template string style
+```
 
-
-> Pages are process top to bottom, so make sure whatever you're mounting to
-> appears before the all to new vue.
+> Pages are process top to bottom, so whatever's being mounted needs to come first.
