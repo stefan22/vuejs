@@ -14,7 +14,8 @@
   ### changing delimiters. :checkered_flag:
 
   ex.
-``
+  
+```
       new Vue({
          delimiters: ['${','}']
       })
