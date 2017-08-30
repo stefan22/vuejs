@@ -1,0 +1,13 @@
+body {
+   width: 900px;
+   margin:0 auto;
+   border:2px ridge #00bfff;
+}
+
+#app {
+   padding: 1em;
+   text-align: center;
+   font-size: 22px;
+   line-height: 26px;
+   color: #4886f5;
+}

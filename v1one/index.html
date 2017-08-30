@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>title</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/vue@2.4.2"></script>
+  </head>
+  <body>  
+      <div id="app">
+         
+         <h1>{{headingOne}}</h1>
+
+      </div>
+
+
+
+
+   <script type="text/javascript">
+       //vue instance for div#app
+       new Vue({
+
+               el:            '#app',
+               data: {
+                  headingOne: 'heading one text with Vue'
+               }
+               
+       
+       });   
+
+   </script>
+  </body>
+</html>
