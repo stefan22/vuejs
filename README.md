@@ -103,7 +103,7 @@ ex:
 ```
        <p>You've selected: {{selfields.join(', ')}}</p>
 
-   ..and my instance will be an array
+   ..and my instance will be an array  :ferris_wheel:
    
   and
    
