@@ -28,7 +28,7 @@
 
 ### data binding  :violin:
 
-#### dynamic url
+##### dynamic url  :banana:	
 
 ```
       <ul>
@@ -37,7 +37,7 @@
 
 ``` 
 
-#### inserting a query string :mushroom:
+##### inserting a query string :banana:	
 
 
 ```
@@ -47,7 +47,7 @@
       
 ``` 
 
-#### data-binding w/ vue  :mushroom:
+##### data-binding w/ vue  :banana:	
 
 ```
       <form>
