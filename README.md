@@ -55,7 +55,7 @@
       </form>
 ```
 
-- dom respond to changes in data   :ski:
+ <kbd>dom respond to changes in data   :ski:</kbd>
 ```
       <form>
           <input type="text" name="name" :value="name">
