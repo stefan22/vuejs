@@ -11,7 +11,7 @@
 - when need to build more robust/advanced UIs and SPAs, it has plugins for routing,
   state management and a powerful CLI that works with module bundlers like webpack.
 
-  ### changing delimiters. :checkered_flag:
+### changing delimiters. :checkered_flag:
 
   ex.
   
@@ -34,11 +34,9 @@
          <li><a v-bind:href="homeURL" target="_blank">home</a></li>
       </ul>
 
-      
-
 ``` 
 
-#### inserting a query string
+#### inserting a query string :mushroom:
 
 
 ```
@@ -48,21 +46,23 @@
       
 ``` 
 
-#### data-binding w/ vue
-dom respond to changes in data.
-```
-          <form>
-            <input type="text" name="name" v-bind:value="name">
-         </form>
-```
+#### data-binding w/ vue  :mushroom:
 
 ```
-          <form>
-            <input type="text" name="name" :value="name">
-         </form>
+      <form>
+           <input type="text" name="name" v-bind:value="name">
+      </form>
+```
 
-         //shorthand version
-         data access is through vm.name not vm.data
+- dom respond to changes in data   :ski:
+```
+      <form>
+          <input type="text" name="name" :value="name">
+      </form>
+
+      //shorthand version
+      data access is through vm.name not vm.data
+      
 ```
 
 
