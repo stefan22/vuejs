@@ -11,7 +11,7 @@
 - when need to build more robust/advanced UIs and SPAs, it has plugins for routing,
   state management and a powerful CLI that works with module bundlers like webpack.
 
-### changing delimiters. :checkered_flag:
+#### changing delimiters. :checkered_flag:
 
   ex.
   
