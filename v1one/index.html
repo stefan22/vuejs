@@ -10,19 +10,35 @@
       <div id="app">
          
          <h1>{{headingOne}}</h1>
+         <nav>
+            <ul>
+               <li><a v-bind:href="homeURL" target="_blank">home</a></li>
+               <li><a v-bind:href="aboutURL" target="_blank">about</a></li>
+            </ul>
+         </nav>
 
-      </div>
+         <form>
+            <input type="text" name="name" v-bind:value="name">
+         </form>
+
+      </div> <!--/.. app -->
 
 
 
 
    <script type="text/javascript">
        //vue instance for div#app
-       new Vue({
+       var vm = new Vue({              //common name used that stands for view model
 
-               el:            '#app',
-               data: {
-                  headingOne: 'heading one text with Vue'
+                  el:         '#app',
+                  data: {
+                  headingOne: 'heading one text with Vue',
+                  homeURL:    'https://www.google.com',
+                  aboutURL:   'http://ukrightmove.co.uk',
+                  name:       'Eric'      //access name with vm.name not vm.data
+
+
+
                }
                
        

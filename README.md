@@ -14,7 +14,8 @@
   ### changing delimiters. :checkered_flag:
 
   ex.
-``
+
+```
       new Vue({
          delimiters: ['${','}']
       })
@@ -23,3 +24,55 @@
 ```
 
 > Pages are process top to bottom, so whatever's being mounted needs to come first.
+
+### data binding
+
+#### dynamic url
+
+```
+      <ul>
+         <li><a v-bind:href="homeURL" target="_blank">home</a></li>
+      </ul>
+
+      
+
+``` 
+
+#### inserting a query string
+
+
+```
+      <ul>
+         <li><a v-bind:href="homeURL + '?myParam=1'" target="_blank">home</a></li>
+      </ul>
+      
+``` 
+
+#### data-binding w/ vue
+dom respond to changes in data.
+```
+          <form>
+            <input type="text" name="name" v-bind:value="name">
+         </form>
+```
+
+```
+          <form>
+            <input type="text" name="name" :value="name">
+         </form>
+
+         //shorthand version
+         data access is through vm.name not vm.data
+```
+
+
+
+
+
+
+
+
+
+
+
+

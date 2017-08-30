@@ -11,3 +11,17 @@ body {
    line-height: 26px;
    color: #4886f5;
 }
+
+ul {
+   list-style: none;
+}
+
+li {
+   display: inline-block;
+
+}
+
+li a {
+   text-decoration: none;
+   margin-right: 15px;
+}
