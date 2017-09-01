@@ -42,21 +42,21 @@
 
                 <div class="checkbox">
                   <label>
-                    <input type="checkbox" name="fav_foods" value="pizza">
-                    {{form.innerform.foodone}}
+                    <input type="checkbox" v-model:value="form.innerform.fav_foods" value="pizza">
+                   {{form.innerform.foodone}}
                   </label>
                 </div> <!--/.. checkbox1 -->
 
                 <div class="checkbox">
                   <label>
-                    <input type="checkbox"  name="fav_foods" value="hamburger">
+                    <input type="checkbox"  v-model="form.innerform.fav_foods" value="hamburger">
                     {{form.innerform.foodtwo}}
                   </label>
                 </div> <!--/.. checkbox2 -->
 
                 <div class="checkbox">
                   <label>
-                    <input type="checkbox" name="fav_foods" value="sushi">
+                    <input type="checkbox" v-model:value="form.innerform.fav_foods" value="sushi">
                     {{form.innerform.foodthree}}
                   </label>
                 </div> <!--/.. checkbox3 -->
@@ -70,7 +70,7 @@
 
             <div id="formresults">
                 <p id="inputpres">{{form.formresults.input}}: {{form.stepone.name}} </p>
-                <p id="ckboxpres">{{form.formresults.ckbox}}</p>
+                <p id="ckboxpres">{{form.formresults.ckbox}}: {{form.innerform.fav_foods.join(', ')}}</p>
             </div>
 
           </form> <!--/.. end of form -->  
@@ -106,7 +106,8 @@
               label: 'What is your favorite food?',
               foodone: 'pizza',
               foodtwo: 'hamburger',
-              foodthree: 'sushi'
+              foodthree: 'sushi',
+              fav_foods: []
           },
 
           formsubmit: {
