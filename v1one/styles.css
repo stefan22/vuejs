@@ -1,76 +1,228 @@
-body {
-   width: 900px;
-   margin:0 auto;
-   border:2px ridge #00bfff;
+/*.. normalize css ..*/
+.header {
+    padding: 40px 0;
+    border-top: 4px solid #222;
 }
 
-#app {
-   padding: 1em;
-   text-align: center;
-   font-size: 22px;
-   line-height: 26px;
-   color: #4886f5;
+
+
+.main-menu { margin-top: 2px; }
+
+.main-menu li {
+    float: left;
+    margin: 0 10px 0 0;
+    position: relative;
+}
+
+.main-menu > li:last-child { margin-right: 0; }
+
+.main-menu a {
+    display: block;
+    padding: 13px 15px;
+    font-size: 0.775em;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #222;
+}
+
+.main-menu > li > a { border-radius: 3px; }
+
+.main-menu > .has-children > a,
+.main-menu > .menu-item-has-children > a { padding-right: 33px; position: relative; }
+
+.main-menu > .has-children > a::after,
+.main-menu > .menu-item-has-children > a::after {
+    content: "";
+    display: block;
+    border: 5px solid transparent;
+    border-top-color: #999;
+    position: absolute;
+    z-index: 1001;
+    right: 16px;
+    top: 50%;
+    margin-top: -2px;
+}
+
+.main-menu > li:hover > a {
+    color: #FFF;
+    background: #CA2017;
+}
+
+.main-menu > .has-children:hover > a::after,
+.main-menu > .menu-item-has-children:hover > a::after { border-top-color: #fff; }
+
+
+/*.. style css  ..*/
+
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+    width: 960px;
+    margin:0 auto;
+    padding:0;
+}
+
+
+body > header {
+    background:brown;
+}
+
+nav {
+    margin:1em 0;
+    border:1px solid #000;
 }
 
 ul {
-   list-style: none;
+    list-style: none;
+    display: block;
+    margin: 1em 0;
 }
 
 li {
-   display: inline-block;
-
+    display: inline-block;
+    margin-right: 3em;
+    
 }
 
 li a {
-   text-decoration: none;
-   margin-right: 15px;
+    font-size: 16px;
+    text-decoration: none;
+    padding: 5px 22px;
+    border: 1px solid #000;
+    background-color: #ecefec;
+    color: #b53e3e;
+    border-radius: 4px;
+    line-height: 30px;
+    
+    
 }
 
-/*.. form ..*/
+#wrapper {
+    margin:2em 0;
+}
 
-form fieldset { 
+#main {
+    padding: 0;
+    border: 1px solid #000;
+}
 
-   margin: 1em 0 2em;
-   text-align: left;
-   border: 0;
-   padding-left: 0;
-   padding: 12px 0 12px 0;
+#main article {
+    padding:0 3em;
+    background-color: #f3f3f3;
+    border-bottom: 2px solid #71a071;
+}
+
+#main p {
+    font-size: 14px;
+    line-height: 22px;
+    color:#333;
+}
+
+article header {
+    margin-bottom: 0;
+    
+}
+
+article header h2 {
+    margin:0;
+    padding-top: 1em;
+}
+
+article header p {
+    padding-bottom: 1.5em;
+    margin-bottom: 0px;
 
 }
 
-form fieldset div {
-   display: inline-block;
-   margin-right: 15px;
+section#two {
+    padding:1em 3em;
+    background: #ecefec;
+}
+
+.stepone, #innerform, #formresults {
+    display: block;
+    margin:25px 0;
 
 }
 
-label {
-   display: block;
-   text-align: left;
+.stepone label {
+    margin-right: 10px;
 }
 
-input[type=email] {
-   display: block;
-   padding: 7px 30px;
-   font-size: 16px;
-   margin-top: 7px;
+input#name {
+    padding:5px;
+}
+
+.checkbox > label > input {
+    padding:5px;
+}
+
+#innerform .checkbox  {
+    margin:10px 0;
+}
+
+#innerform .checkbox label {
+    padding:5px;
+}
+
+#innerform .checkbox label input {
+    margin-right: 7px;
+}
+
+
+#formresults {
+    background-color: #fff;
+    padding:5px;
+    border-radius: 4px;
+}
+
+#formresults p {
+    color: #060810;
+    font-size: 18px;
+    line-height: 27px;
+    border-radius: 4px;
 
 }
 
-input[type=checkbox] {
-   margin-right:5px;
+footer {
+    height: 150px;
+    color:#fff;
+    
+    vertical-align: middle;
+    background:url(v1show/images/vuejs.png) no-repeat center;
+    background-color: #333;
 }
 
-input[type=submit] {
-   display: block;
-   text-align: left;
+footer p {
+    line-height: 150px;
+    vertical-align: middle;
+    padding: 0 50px;
 }
 
-p {
-   text-align: left;
-   font-size: 20px;
-   color: #de4444;
+
+#formsubmit {
+    padding: 7px 15px;
+    border-radius: 4px;
+    font-size: 14px;
+    background: white;
+    cursor: pointer;
 }
+
+
+
 
 
 

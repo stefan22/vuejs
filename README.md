@@ -107,6 +107,167 @@ ex: checkboxes
       selfields = ['Cycling', 'Swimming'];
 
 
+#### rendering content in a loop/while toggling their display
+(whether pull from database or api and rendered dynamically)
+
+<script type="text/javascript">
+  <div id="app">
+      <form method="post" action="/">
+        <label for="email">Email</label> <input type="email" v-model.lazy="email" id="email">
+        <fieldset>
+          <legend>Interests</legend>
+          <div v-for="interest in interests">
+              <input type="checkbox" v-model="selectedInterests" :value="interest"/>{{interest}}
+          </div>
+        </fieldset>
+        <input type="submit" value="Subscribe">
+        <!--<p>You entered {{email}}.</p>-->
+        
+        <p v-show="selectedInterests.length > 0"> 
+            
+            You selected: {{selectedInterests.join(', ')}}
+        
+        </p>
+      </form>
+  </div>
+</script>
+
+<script>
+  var vm = new Vue({
+     el:                      '#app',
+     data: {
+       email: '',
+       interest:              ['Running', 'Cycling', 'Swimming'],
+       selectedInterests:     []
+     }
+  });
+</script>
+
+
+```
+
+#### If I want to hide this section til one element is selected:
+
+```
+    <p v-show="selectedInterests.length > 0"> 
+            
+        You selected: {{selectedInterests.join(', ')}}
+        
+    </p>
+
+
+```
+
+#### v-if directive (use when you don't expect that value to change)
+it removes the element from the DOM when the expression is false
+
+```
+    <p v-if="selectedInterests.length > 0"> 
+            
+        You selected: {{selectedInterests.join(', ')}}
+        
+    </p>
+
+    <p v-else>Please select at least one</p>
+
+```
+#### v-else  (can be used for whenever the v-if fails)
+
+#### v-else-if  (to add an arbitrary number of cases)
+
+```  
+    <p v-else-if="selectedInterests.length ==3">Please select at least one</p>
+
+```
+
+#### this gets id on url
+
+
+```
+    <div v-for="(interest, index) in interests">
+        <input type="checkbox" v-model="selectedInterests" :value="interest.id"/>
+        {{index}}.{{interest.name}}
+    </div>
+        
+    <p v-show="selectedInterests.length > 0"> 
+            
+        You selected: {{selectedInterests.join(', ')}}
+        
+    </p>
+
+```
+
+new instance:   
+by adding a second looping variable, and putting them both in parentheses,
+we can get access to that index   
+index before that name in curly braces adds index: 0,1,2
+
+ex:
+
+```
+  0.Running
+  1.Cycling
+  2.Swimming
+
+```
+
+
+
+```
+  <script>
+        var vm = new Vue({
+           el:                      '#app',
+           data: {
+             email: '',
+             interest:  [
+                {
+                  id: 1,
+                  name: 'Running',
+                },
+                
+                {
+                  id: 2,
+                  name: 'Cycling'
+                },
+
+                {
+                  id: 3,
+                  name: 'Swimming'
+                }    
+
+
+             ],        
+
+             selectedInterests:     []
+           }
+        });
+  </script>
+
+
+```
+
+
+### another way to display every value key pair
+(for access to the index, add another parameter after key)
+and add {{index+1}} before {{key}}
+
+```
+    <div v-for="(value, key) in address">
+          {{key}}: {{value}}
+    </div>
+
+    selectedInterests = [],
+    address: {
+        street: '123 Is my house',
+        city: 'London',
+        postcode: NW123
+    }
+
+```
+
+  
+
+
 
 
 
