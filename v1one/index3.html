@@ -89,8 +89,8 @@ form input with name and picking up checkboxes dynamically
     
       </section><!--//..  section#2 -->
   </section> <!--/.. #main -->
-  <footer>
-    <p>dummy form with a footer</p>
+  <footer id="botsec">
+    <p>{{foot.left}}</p>
   </footer>
 </div>  <!--/.. #wrapper -->
 
@@ -123,7 +123,7 @@ form input with name and picking up checkboxes dynamically
         
       }//data
 
-  });
+  }); //topsec
 
   
   var mainsec = new Vue({
@@ -162,7 +162,11 @@ form input with name and picking up checkboxes dynamically
               ckbox:     'You\'ve selected: '
           }
 
-      }//form
+      },//form
+
+      foot: {
+        left: 'some text here to the left'
+      }
 
 
     }//data
@@ -171,6 +175,9 @@ form input with name and picking up checkboxes dynamically
 
 
   }); //app
+
+
+  
 
 
 
