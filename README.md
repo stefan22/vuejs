@@ -1,4 +1,4 @@
-# <kbd>vuejs. :tanabata_tree: notes</kbd>
+# <kbd>VUEJS :tanabata_tree: NOTES</kbd>
 :statue_of_liberty:vuejs.org
 
 - js framework that offers a progressive approach to solving front-end problems.
