@@ -11,7 +11,7 @@
 - when need to build more robust/advanced UIs and SPAs, it has plugins for routing,
   state management and a powerful CLI that works with module bundlers like webpack.
 
-### changing delimiters. :checkered_flag:
+#### changing delimiters. :checkered_flag:
 
   ex.
   
@@ -67,18 +67,21 @@
       
 ```
 
-### 2-way data binding - like with angular
-- UI and model
+## 2-way data binding (UI - Model)  :doughnut:
 
+```
 ex:
    instead of using: =>  v-bind:value="name"
 
                      =>  v-model="name"
+```
 
 
-- you can add ***modifiers*** into two-way data binding that act like onfocus and
-  onblur events in js (too much data binding could get annoying)
 
+- you can add ***modifiers*** into two-way data binding that act like ***onfocus*** and
+  ***onblur*** events in js (too much data binding could get annoying)
+
+```
   ex:
          v-model:value="email"         //this worked for me as well
 
@@ -86,26 +89,33 @@ ex:
 
          v-model.lazy="email"          //adding lazy holds on till the onblur
                                        //event happens before it updates model
+```
 
 
-ex: checkboxes
 
-   assuming something like this:
+<kbd>ex: checkboxes :doughnut:</kbd>
+
+   ***assuming something like this:***
 
 ``` 
    <input type="checkbox" v-model="selfields" value="Cycling">
    <input type="checkbox" v-model="selfields" value="Swimming">
 ```
-    <p>You've selected: {{selfields.join(', ')}}</p>
+       <p>You've selected: {{selfields.join(', ')}}</p>
 
-    ..and my instance will be an array
-    and
-    lets say I want one or more fields selected, then:
+   ..and my instance will be an array  :ferris_wheel:
+   
+  and
+   
+   lets say I want ***one or more fields selected*** then:
 
-    in my array:
+  in my array:
+ 
+ 
 
-      selfields = ['Cycling', 'Swimming'];
-
+```
+    selfields = ['Cycling', 'Swimming'];
+```
 
 #### rendering content in a loop/while toggling their display
 (whether pull from database or api and rendered dynamically)
