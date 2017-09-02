@@ -1,8 +1,10 @@
 <!-- 
-pretty-easy-so-far
 ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 form input with name and picking up checkboxes dynamically 
  (two-way data binding) 
+
+ Using control flow techniques for rendering content in a
+ loop
 
 ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
  -->
@@ -18,13 +20,13 @@ form input with name and picking up checkboxes dynamically
   <title>vue input directives</title>
 </head>
 <body>
-  <header>
+  <header id="topsec">
     <nav>
       <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#prac1">prac1</a></li>
-        <li><a href="#prac2">prac2</a></li>
-        <li><a href="#prac3">prac3</a></li>
+        <li><a v-bind:href="nav.url.hm">{{nav.name.hm}}</a></li>
+        <li><a v-bind:href="nav.url.pk1">{{nav.name.pk1}}</a></li>
+        <li><a v-bind:href="nav.url.pk2">{{nav.name.pk2}}</a></li>
+        <li><a v-bind:href="nav.url.pk3">{{nav.name.pk3}}</a></li>
       </ul>
     </nav>
   </header>
@@ -93,8 +95,38 @@ form input with name and picking up checkboxes dynamically
 </div>  <!--/.. #wrapper -->
 
 <script type="text/javascript">
+
+  var topsec = new Vue({
+      el: '#topsec',
+
+      data: {
+
+        nav: {
+             url: {
+                  hm:  '#home',
+                  pk1: '#prac1',
+                  pk2: '#prac2',
+                  pk3: '#prac3'
+             },
+
+             name: {
+                  hm:  'Home',
+                  pk1: 'Pract1',
+                  pk2: 'Pract2',
+                  pk3: 'Pract3'
+
+             }
+
+
+        }//nav
+
+        
+      }//data
+
+  });
+
   
-  var app = new Vue({
+  var mainsec = new Vue({
 
     el: '#wrapper',
 
@@ -102,7 +134,7 @@ form input with name and picking up checkboxes dynamically
 
       header: {
           vh2: 'Vue input pratice',
-          vp: 'ok a few basic samples from prev notes'
+           vp: 'ok a few basic samples from prev notes'
       },
 
       form: {
@@ -113,21 +145,21 @@ form input with name and picking up checkboxes dynamically
           },
 
           innerform: {
-              label: 'What is your favorite food?',
-              foodone: 'pizza',
-              foodtwo: 'hamburger',
-              foodthree: 'sushi',
+                label:   'What is your favorite food?',
+              foodone:   'pizza',
+              foodtwo:   'hamburger',
+            foodthree:   'sushi',
               //setting pizza as selected
               fav_foods: ['pizza']
           },
 
           formsubmit: {
-              submit: 'Submit'
+              submit:    'Submit'
           },
 
           formresults: {
-              input: 'You\'ve entered: ',
-              ckbox: 'You\'ve selected: '
+              input:     'You\'ve entered: ',
+              ckbox:     'You\'ve selected: '
           }
 
       }//form
@@ -139,6 +171,8 @@ form input with name and picking up checkboxes dynamically
 
 
   }); //app
+
+
 
 
 
