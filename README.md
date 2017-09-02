@@ -29,7 +29,7 @@
 
 ## data binding  :violin:
 
-##### <kbd>dynamic url  :banana:</kbd>	
++ <kbd>dynamic url  :banana:</kbd>	
 
 ```
       <ul>
@@ -38,7 +38,7 @@
 
 ``` 
 
-##### <kbd>inserting a query string :banana:</kbd>	
++ <kbd>inserting a query string :banana:</kbd>	
 
 
 ```
@@ -48,7 +48,7 @@
       
 ``` 
 
-##### <kbd>data-binding w/ vue  :banana:</kbd>	
++ <kbd>data-binding w/ vue  :banana:</kbd>	
 
 ```
       <form>
