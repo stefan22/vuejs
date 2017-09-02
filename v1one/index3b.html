@@ -7,6 +7,13 @@ form input with name and picking up checkboxes dynamically
  loop, convenient when pulling data from a database or an API
  dynamically
 
+ like in angular:
+ fav in fav_foods
+ but then
+ bind value to fav
+
+ v-show now shows results paragraph only if a checkbox is selected
+
  single-data-binding added to most static content in page
 
 ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
@@ -51,32 +58,19 @@ form input with name and picking up checkboxes dynamically
               <input type="text" name="name" id="name" placeholder="enter your name" v-model:value="form.stepone.name" tabindex="1">
             </div> <!--/.. stepone -->
 
+
             <div id="innerform">
-
                 <label class="control-label">{{form.innerform.label}}</label>
-
-                <div class="checkbox">
+                <!--/.. v-for loop -->
+                <div class="checkbox" v-for="fav in form.innerform.fav_foods">
                   <label>
-                    <input type="checkbox" v-model:value="form.innerform.fav_foods" value="pizza">
-                   {{form.innerform.foodone}}
+                    <input type="checkbox" v-model:value="form.innerform.selfoods" 
+                    v-bind:value="fav">{{fav}}
                   </label>
                 </div> <!--/.. checkbox1 -->
-
-                <div class="checkbox">
-                  <label>
-                    <input type="checkbox"  v-model="form.innerform.fav_foods" value="hamburger">
-                    {{form.innerform.foodtwo}}
-                  </label>
-                </div> <!--/.. checkbox2 -->
-
-                <div class="checkbox">
-                  <label>
-                    <input type="checkbox" v-model:value="form.innerform.fav_foods" value="sushi">
-                    {{form.innerform.foodthree}}
-                  </label>
-                </div> <!--/.. checkbox3 -->
-
+                <!--/.. end of v-for loop -->
             </div> <!--/.. innerform --> 
+             
 
             <div> 
               <button id="formsubmit" name="submit" type="submit">{{form.formsubmit.submit}}
@@ -85,7 +79,8 @@ form input with name and picking up checkboxes dynamically
 
             <div id="formresults">
                 <p id="inputpres">{{form.formresults.input}}: {{form.stepone.name}} </p>
-                <p id="ckboxpres">{{form.formresults.ckbox}}: {{form.innerform.fav_foods.join(', ')}}</p>
+                <!--/.. show only if at least one is selected -->
+                <p v-show="form.innerform.selfoods.length > 0" id="ckboxpres">{{form.formresults.ckbox}}: {{form.innerform.selfoods.join(', ')}}</p>
             </div>
 
           </form> <!--/.. end of form -->  
@@ -152,8 +147,10 @@ form input with name and picking up checkboxes dynamically
               foodone:   'pizza',
               foodtwo:   'hamburger',
             foodthree:   'sushi',
-              //setting pizza as selected
-              fav_foods: ['pizza']
+            selfoods: [],
+              //entire list of fav food array
+              fav_foods: ['pizza','hamburger','sushi']
+              
           },
 
           formsubmit: {
