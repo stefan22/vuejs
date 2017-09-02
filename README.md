@@ -1,4 +1,4 @@
-# vuejs. :tanabata_tree:
+# <kbd>VUEJS :tanabata_tree: NOTES</kbd>
 :statue_of_liberty:vuejs.org
 
 - js framework that offers a progressive approach to solving front-end problems.
@@ -29,7 +29,7 @@
 
 ## data binding  :violin:
 
-##### <kbd>dynamic url  :banana:</kbd>	
++ <kbd>dynamic url  :banana:</kbd>	
 
 ```
       <ul>
@@ -38,7 +38,7 @@
 
 ``` 
 
-##### <kbd>inserting a query string :banana:</kbd>	
++ <kbd>inserting a query string :banana:</kbd>	
 
 
 ```
@@ -48,7 +48,7 @@
       
 ``` 
 
-##### <kbd>data-binding w/ vue  :banana:</kbd>	
++ <kbd>data-binding w/ vue  :banana:</kbd>	
 
 ```
       <form>
@@ -56,7 +56,7 @@
       </form>
 ```
 
- <kbd>dom respond to changes in data   :ski:</kbd>
++ <kbd>dom respond to changes in data   :ski:</kbd>
 ```
       <form>
           <input type="text" name="name" :value="name">
