@@ -118,7 +118,7 @@ ex:
 ```
 
 
-#### rendering content in a loop/while toggling their display
+#### :small_orange_diamond: rendering content in a loop/while toggling their display
 (whether pull from database or api and rendered dynamically)
 
 <script type="text/javascript">
@@ -158,7 +158,7 @@ ex:
 
 
 
-#### If I want to hide this section til one element is selected:
+#### :small_orange_diamond: If I want to hide this section til one element is selected:
 
 
 
@@ -172,7 +172,7 @@ ex:
 
 ```
 
-#### v-if directive (use when you don't expect that value to change)
+#### :small_orange_diamond: v-if directive (use when you don't expect that value to change)
 it removes the element from the DOM when the expression is false
 
 ```
@@ -185,16 +185,16 @@ it removes the element from the DOM when the expression is false
     <p v-else>Please select at least one</p>
 
 ```
-#### v-else  (can be used for whenever the v-if fails)
+#### :small_orange_diamond: v-else  (can be used for whenever the v-if fails)
 
-#### v-else-if  (to add an arbitrary number of cases)
+#### :small_orange_diamond: v-else-if  (to add an arbitrary number of cases)
 
 ```  
     <p v-else-if="selectedInterests.length ==3">Please select at least one</p>
 
 ```
 
-#### this gets id on url
+#### :small_orange_diamond: this gets id on url
 
 
 ```
@@ -261,7 +261,7 @@ ex:
 ```
 
 
-### another way to display every value key pair
+### :small_orange_diamond: another way to display every value key pair
 (for access to the index, add another parameter after key)
 and add {{index+1}} before {{key}}
 
