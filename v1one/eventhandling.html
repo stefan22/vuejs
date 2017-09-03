@@ -16,6 +16,14 @@ passing functionality to the instance:
       
       - adding methods right after data, is a good idea too!
 
+      extras:
+      setting var loggedin as false by default
+      then true when you call loginfn (to toggle visibility of login button)
+
+* Log-in - Log-out buttons with messages.
+
+  - passing a parameter with login
+
                                                 
 
 
@@ -56,25 +64,23 @@ passing functionality to the instance:
 
           <form id="myForm" action="#" method="">
             
-            <div class="stepone">
-              <label for="name">{{form.stepone.label}}</label>
-              <input type="text" name="name" id="name" placeholder="enter your name" v-model:value="form.stepone.name" tabindex="1">
-            </div> <!--/.. stepone -->
+            
 
 
             <div class="innerform">
-
-                <button id="btwo" v-on:click="login">Log in
+                <!--/.. add only when not logged in -->
+                <button v-if="!form.innerform.loggedin" id="btwo" v-on:click="login('Stef')">Log in
                 </button>
 
 
-                <button v-on:click="form.innerform.message= 'Welcome to your Login page!'">Log in</button>
-                
-                <p>{{form.innerform.message}}</p>
+                <!-- <button v-else v-on:click="form.innerform.message= 'Thanks for stopping by!'">Log in</button> -->
 
+
+                <button v-else v-on:click="logout">Log out</button>
                 
-                
-                <p>{{form.innerform.message2}}</p>
+                <p>{{form.innerform.messageIn}}</p>
+
+                <p>{{form.innerform.messageOut}}</p>
 
 
 
@@ -161,9 +167,10 @@ passing functionality to the instance:
           },
 
           innerform: {
-                 button:  '',
-                message:  '',
-               message2:  ''
+                   button:  '',
+                messageIn:  '',
+               messageOut:  '',
+                 loggedin: false
 
           }, //innerform
 
@@ -186,10 +193,21 @@ passing functionality to the instance:
 
     methods: {
       
-      login: function() {
-          this.form.innerform.message2 = 'this is my second login message'
+      login: function(username) {
+          //set to true by default
+          this.form.innerform.loggedin = true;
+          this.form.innerform.messageIn = 'Welcome back ' + username;
+          this.form.innerform.messageOut = '';
 
-      }//loginfn
+      },//loginfn
+
+      logout: function() {
+          //set to false
+          this.form.innerform.loggedin = false;
+          this.form.innerform.messageOut = 'Thanks for stopping by...you are the man!';
+          this.form.innerform.messageIn = '';
+
+      }//logout
 
     }//methods
 

@@ -26,6 +26,13 @@
     color: #222;
 }
 
+.loggedin {
+    background: #d4f7d4;
+    color: #de4a4a;
+    font-weight: bold;
+    border:1px solid #333;
+}
+
 .main-menu > li > a { border-radius: 3px; }
 
 .main-menu > .has-children > a,
@@ -178,6 +185,10 @@ section#two {
     height: auto;
     cursor: pointer;
 
+}
+
+.innerform button:focus, .innerform button:active {
+    outline: none;
 }
 
 div.innerform p {
