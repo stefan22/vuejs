@@ -1,0 +1,204 @@
+<!-- 
+––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+form input with name and picking up checkboxes dynamically 
+ (two-way data binding) 
+
+ Using control flow techniques for rendering content in a
+ loop, convenient when pulling data from a database or an API
+ dynamically
+
+ like in angular:
+ fav in fav_foods
+ but then
+ bind value to fav
+
+ v-show now shows results paragraph only if a checkbox is selected
+
+ v-show for toggling visibility
+ v-if when not expecting boolean value to change
+ v-else (if v-if exists for when condition fails)
+ v-else-if to add an arbitrary number of cases
+
+ v-else and v-else-if dont work with v-show
+
+ single-data-binding added to most static content in page
+
+––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+ -->
+
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <link href="styles.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="https://unpkg.com/vue@2.4.2/dist/vue.js">
+  </script>
+  <title>vue input directives</title>
+</head>
+<body>
+  <header id="topsec">
+    <nav>
+      <ul>
+        <li><a v-bind:href="nav.url.hm">{{nav.name.hm}}</a></li>
+        <li><a v-bind:href="nav.url.pk1">{{nav.name.pk1}}</a></li>
+        <li><a v-bind:href="nav.url.pk2">{{nav.name.pk2}}</a></li>
+        <li><a v-bind:href="nav.url.pk3">{{nav.name.pk3}}</a></li>
+      </ul>
+    </nav>
+  </header>
+<div id="wrapper">  
+  <section id="main">  
+    <article>
+      <header>
+        <h2>{{header.vh2}}</h2>
+        <p>{{header.vp}}</p>
+      </header>
+    </article>
+
+       <section id="two">
+
+          <form id="myForm" action="#" method="post">
+            
+            <div class="stepone">
+              <label for="name">{{form.stepone.label}}</label>
+              <input type="text" name="name" id="name" placeholder="enter your name" v-model:value="form.stepone.name" tabindex="1">
+            </div> <!--/.. stepone -->
+
+
+            <div id="innerform">
+                <label class="control-label">{{form.innerform.label}}</label>
+                <!--/.. v-for loop -->
+                <div class="checkbox" v-for="fav in form.innerform.fav_foods">
+                  <label>
+                    <input type="checkbox" v-model:value="form.innerform.selfoods" 
+                    v-bind:value="fav">{{fav}}
+                  </label>
+                </div> <!--/.. checkbox1 -->
+                <!--/.. end of v-for loop -->
+            </div> <!--/.. innerform --> 
+             
+
+            <div> 
+              <button id="formsubmit" name="submit" type="submit">{{form.formsubmit.submit}}
+              </button>
+            </div>
+
+            <div id="formresults">
+                <p id="inputpres">{{form.formresults.input}}: {{form.stepone.name}} </p>
+                <!--/.. show only if at least one is selected -->
+                <p v-show="form.innerform.selfoods.length > 0" id="ckboxpres">{{form.formresults.ckbox}}: {{form.innerform.selfoods.join(', ')}}</p>
+            </div>
+
+          </form> <!--/.. end of form -->  
+    
+      </section><!--//..  section#2 -->
+  </section> <!--/.. #main -->
+  <footer id="botsec">
+    <p>{{foot.left}}</p>
+  </footer>
+</div>  <!--/.. #wrapper -->
+
+<script type="text/javascript">
+
+  var topsec = new Vue({
+      el: '#topsec',
+
+      data: {
+
+        nav: {
+             url: {
+                  hm:  '#home',
+                  pk1: '#prac1',
+                  pk2: '#prac2',
+                  pk3: '#prac3'
+             },
+
+             name: {
+                  hm:  'Home',
+                  pk1: 'Pract1',
+                  pk2: 'Pract2',
+                  pk3: 'Pract3'
+
+             }
+
+
+        }//nav
+
+        
+      }//data
+
+  }); //topsec
+
+  
+  var mainsec = new Vue({
+
+    el: '#wrapper',
+
+    data: {
+
+      header: {
+          vh2: 'Vue input pratice',
+           vp: 'ok a few basic samples from prev notes'
+      },
+
+      form: {
+
+          stepone: {
+              label: 'Name: ',
+               name: ''
+          },
+
+          innerform: {
+                label:   'What is your favorite food?',
+              foodone:   'pizza',
+              foodtwo:   'hamburger',
+            foodthree:   'sushi',
+            selfoods: [],
+              //entire list of fav food array
+              fav_foods: ['pizza','hamburger','sushi']
+              
+          },
+
+          formsubmit: {
+              submit:    'Submit'
+          },
+
+          formresults: {
+              input:     'You\'ve entered: ',
+              ckbox:     'You\'ve selected: '
+          }
+
+      },//form
+
+      foot: {
+        left: 'some text here to the left'
+      }
+
+
+    }//data
+
+
+
+
+  }); //app
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

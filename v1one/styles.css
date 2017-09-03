@@ -158,6 +158,36 @@ section#two {
 
 }
 
+ /*.. for event handling pg ..*/
+.innerform {
+    min-height: 450px;
+    display: block;
+    border:1px solid #666;
+    margin:1em 0;
+}
+
+.innerform button {
+    padding: 7px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 22px;
+    background-color: #fff;
+    display: block;
+    margin:3em auto 0;
+    width: 100px;
+    height: auto;
+    cursor: pointer;
+
+}
+
+div.innerform p {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top:3em;
+    letter-spacing: 1px;
+}
+
 .stepone label {
     margin-right: 10px;
 }

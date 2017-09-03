@@ -1,0 +1,208 @@
+<!-- 
+––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+ event handling
+ v-on:evt-name    ex: v-on:click="message"
+
+if adding entire logic between directive (not recommended)
+
+then =>.  v-on:click="message='welcome you!'"    //whole thing wrapped up in quotes
+                                                  and text copy in single quotes
+
+passing functionality to the instance:
+  -converting into a function
+  -use 'this' recommended
+
+  •••…¬note:not sure but i think it needs to be under a 'methods' property
+      
+      - adding methods right after data, is a good idea too!
+
+                                                
+
+
+––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+ -->
+
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <link href="styles.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="https://unpkg.com/vue@2.4.2/dist/vue.js">
+  </script>
+  <title>vue input directives</title>
+</head>
+<body>
+  <header id="topsec">
+    <nav>
+      <ul>
+        <li><a v-bind:href="nav.url.hm">{{nav.name.hm}}</a></li>
+        <li><a v-bind:href="nav.url.pk1">{{nav.name.pk1}}</a></li>
+        <li><a v-bind:href="nav.url.pk2">{{nav.name.pk2}}</a></li>
+        <li><a v-bind:href="nav.url.pk3">{{nav.name.pk3}}</a></li>
+      </ul>
+    </nav>
+  </header>
+<div id="wrapper">  
+  <section id="main">  
+    <article>
+      <header>
+        <h2>{{header.vh2}}</h2>
+        <p>{{header.vp}}</p>
+      </header>
+    </article>
+
+       <section id="two">
+
+          <form id="myForm" action="#" method="">
+            
+            <div class="stepone">
+              <label for="name">{{form.stepone.label}}</label>
+              <input type="text" name="name" id="name" placeholder="enter your name" v-model:value="form.stepone.name" tabindex="1">
+            </div> <!--/.. stepone -->
+
+
+            <div class="innerform">
+
+                <button id="btwo" v-on:click="login">Log in
+                </button>
+
+
+                <button v-on:click="form.innerform.message= 'Welcome to your Login page!'">Log in</button>
+                
+                <p>{{form.innerform.message}}</p>
+
+                
+                
+                <p>{{form.innerform.message2}}</p>
+
+
+
+
+            </div> <!--/.. innerform -->
+
+
+           
+
+
+
+
+            <div> 
+              <button id="formsubmit" name="submit" type="submit">{{form.formsubmit.submit}}
+              </button>
+            </div>
+
+
+
+
+            <div id="formresults">
+              
+                
+               
+            </div>
+
+          </form> <!--/.. end of form -->  
+    
+      </section><!--//..  section#2 -->
+  </section> <!--/.. #main -->
+  <footer id="botsec">
+    <p>{{foot.left}}</p>
+  </footer>
+</div>  <!--/.. #wrapper -->
+
+<script type="text/javascript">
+
+  var topsec = new Vue({
+      el: '#topsec',
+
+      data: {
+
+        nav: {
+             url: {
+                  hm:  '#home',
+                  pk1: '#prac1',
+                  pk2: '#prac2',
+                  pk3: '#prac3'
+             },
+
+             name: {
+                  hm:  'Home',
+                  pk1: 'Pract1',
+                  pk2: 'Pract2',
+                  pk3: 'Pract3'
+
+             }
+
+
+        }//nav
+
+        
+      }//data
+
+  }); //topsec
+
+  
+  var mainsec = new Vue({
+
+    el: '#wrapper',
+
+    data: {
+
+      header: {
+          vh2: 'Vue input pratice',
+           vp: 'ok a few basic samples from prev notes'
+      },
+
+      form: {
+
+          stepone: {
+              label: 'Name: ',
+               name: ''
+          },
+
+          innerform: {
+                 button:  '',
+                message:  '',
+               message2:  ''
+
+          }, //innerform
+
+          formsubmit: {
+              submit:    'Submit'
+          },
+
+          formresults: {
+              
+          }
+
+      },//form
+
+      foot: {
+        left: 'some text here to the left'
+      }
+
+
+    },//data
+
+    methods: {
+      
+      login: function() {
+          this.form.innerform.message2 = 'this is my second login message'
+
+      }//loginfn
+
+    }//methods
+
+
+
+
+  }); //app
+
+
+  
+
+
+
+</script>
+</body>
+</html>
