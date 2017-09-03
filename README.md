@@ -117,6 +117,7 @@ ex:
     selfields = ['Cycling', 'Swimming'];
 ```
 
+
 #### rendering content in a loop/while toggling their display
 (whether pull from database or api and rendered dynamically)
 
@@ -154,9 +155,12 @@ ex:
 </script>
 
 
-```
+
+
 
 #### If I want to hide this section til one element is selected:
+
+
 
 ```
     <p v-show="selectedInterests.length > 0"> 
