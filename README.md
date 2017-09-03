@@ -107,7 +107,7 @@ ex:
    
   and
    
-   lets say I want ***one or more fields selected*** then:
+   lets say I want ***one or more fields selected*** then:  :boom:
 
   in my array:
  
