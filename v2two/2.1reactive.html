@@ -13,6 +13,9 @@
 
  Vue.set(vm.browser,'version', 55)
 
+ Use computed to calculate values based on other properties
+ within same instance
+
 ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
  -->
 <!DOCTYPE html>
@@ -25,6 +28,9 @@
     </p>
     <div v-for="fw in frameworks">{{fw}}</div>
     <p>{{browser.name}} {{browser.version}}</p>
+
+    <input type="text" v-model.number.lazy ="tempF">
+    Temperature in Celsius: {{tempC}}
 </div>
 
 <script>
@@ -36,6 +42,12 @@
             frameworks: ['Ember', 'Angular', 'React'],
             browser: {
                 name: 'Google Chrome'
+            },
+            tempF: 0
+       },
+       computed: {
+            tempC: function() {
+                return Math.round(5/9 * (this.tempF - 32));
             }
        }
     });

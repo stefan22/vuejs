@@ -340,14 +340,66 @@ Constructor Parameter:
 
 ```
 
+### computer properties
+allow you to setup more sophisticated relationships between data properties
+
+We can declare initial properties and data, and use them in expressions in our
+templates, but it's not possible to refer to other data properties from
+within this initial data property itself.
+
+ex: to create a full name property out of firstname and lastname
+
+```
+    data: {
+      fistname: 'Mike',
+      lastname: 'Jones',
+      fullname: this.firstname + ' ' + this.lastname  
+
+      // wont work cause neither the data object nor the view instance have
+      // been created yet and `this` refers to the window global object or
+      // undefined in strict mode
+
+    }
+```  
 
 
+```
+      //assuming tempF is part of data instance
+
+    computed: {
+            console.log('using computed property');  //will show and if log
+            tempC: function() {                      // is cached 
+                return Math.round(5/9 * (this.tempF - 32));
+            }
+       }
+
+       //then
+
+       {{tempC}}
 
 
+```
+
+> note: crazy enough, you can just call it using:
+
+```
+      methods: {
+            console.log('using method');      //when called
+            tempC: function() {
+                return Math.round(5/9 * (this.tempF - 32));
+            }
+       }
+
+       //then
+
+       {{tempC()}}
 
 
+       // big difference is that with methods is going to get
+       // recalculated everytime you call the function
 
-
+       // but with computed it gets ***cached***
+```
 
 
 
