@@ -1,0 +1,45 @@
+<!-- 
+––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+ how to vue manages data pass to constructor and
+ changes that need re-rendering
+
+ In order to re-render the value of firstName, or lastName
+ it needs to first be declared within the data object.
+ You can still re-render by setting some other value that
+ is within the data object but to watch it, it needs to be
+ part of the data object
+
+ There's also:
+
+ Vue.set(vm.browser,'version', 55)
+
+––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+ -->
+<!DOCTYPE html>
+
+<script type="text/javascript" src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+
+<div id="app">
+    <p>
+        {{firstName}} {{lastName}}
+    </p>
+    <div v-for="fw in frameworks">{{fw}}</div>
+    <p>{{browser.name}} {{browser.version}}</p>
+</div>
+
+<script>
+    var vm = new Vue({
+       el: '#app',
+       data: {
+            firstName: 'Mike',
+            lastName: '',
+            frameworks: ['Ember', 'Angular', 'React'],
+            browser: {
+                name: 'Google Chrome'
+            }
+       }
+    });
+    
+    vm.lastName = 'Sullivan';
+    
+</script>

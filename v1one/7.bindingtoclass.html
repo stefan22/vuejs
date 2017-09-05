@@ -1,0 +1,111 @@
+<!-- 
+––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+ styles:
+ v-bind:class or :class="{bclass: true}"
+
+––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+ -->
+
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <link href="styles.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="https://unpkg.com/vue@2.4.2/dist/vue.js">
+  </script>
+  <title>vue</title>
+  <style type="text/css" rel="stylesheet">
+      .square {
+        background-color: yellow;
+        padding:10px;
+        margin-left:5px;
+      }
+      .blue {color:blue;}
+      .red {color:red;}
+  </style>
+</head>
+<body>
+  <header id="topsec">
+    <nav>
+      <ul>
+        <li><a>home</a></li>
+        <li><a>link1</a></li>
+        <li><a>link2</a></li>  
+      </ul>
+    </nav>
+  </header>
+<div id="wrapper">  
+  <section id="main"> 
+
+        <div id="app">
+
+            <div class="row">
+                  <p v-bind:class="{square:true}">one,two, three</p>  
+            </div>
+
+            <div class="row">
+                  <p v-bind:class="{blue:classOne, red:classTwo}">
+                                    one,two, three</p>  
+            </div>
+        
+
+        </div>
+
+            <section id="two">
+
+
+                    <div id="formresults">            
+            
+                    </div>    
+            </section>  
+
+  </section>
+  <footer id="botsec">
+    <p>footer</p>
+  </footer>
+</div>
+</head>
+<body>
+
+
+
+<script>
+    var vm = new Vue({
+       el: '#app',
+       data: {
+            classOne: true,
+            classTwo: false
+       }
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

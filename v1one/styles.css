@@ -264,6 +264,24 @@ footer p {
 }
 
 
+.square {
+     width: 200px;
+     height: 200px;
+     margin-bottom: 20px;
+}
+.blue {
+    background-color: blue;
+}
+.red {
+    background-color: red;
+}
+.yellow {
+    background-color: yellow;
+}
+.dashed-border {
+    border: dashed 4px black;
+}
+
 
 
 

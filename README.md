@@ -276,6 +276,79 @@ and add {{index+1}} before {{key}}
 ```
 
   
+## basic binding notes
+
+- v-show for toggling visibility
+- v-if when not expecting boolean value to change
+- v-else (if v-if exists for when condition fails)
+- v-else-if to add an arbitrary number of cases
+- v-else and v-else-if dont work with v-show
+- single-data-binding added to most static content in page
+
+- v-for loop syntax: -> "item in collection"
+- (item,index) to a second looping index, to get access to that index.
+
+- for event handlers: v-on:evt-name    ex: v-on:click="message"
+
+
+## vue instance
+- how to vue manages data pass to constructor and changes that need re-rendering
+
+> when a vue is first initialized, the properties and the data object are added
+  to the instance along with special getter and setter methods.
+  - getter when invoked returns value and executes
+  - setter invoked sets value and re-renders as well
+
+
+```
+
+Vue instance:
+
+  get firstname() {
+   
+   /*
+    *  Register this property and watch
+    *  for changes to react to.
+    *  Return the value
+    *
+    */
+
+  }
+
+  set firstName()
+
+   /*
+    *  Update the value.
+    *  Re-render any elements that use it. (updating vue's virtual dom
+    *  which can be updated much faster. Once updated, it compares the new
+    *  virtual dom to the previous version and updates only changes
+    */
+
+Constructor Parameter:
+
+{
+    data: {
+
+        firstName: ''
+    }
+
+}  
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
