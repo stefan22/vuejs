@@ -1,0 +1,81 @@
+<!-- 
+––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+ how to vue manages data pass to constructor and
+ changes that need re-rendering
+
+ watch: 
+        properties we would like to watch in response
+        to changes.
+        asynchronous tasks in response to a property change
+
+//open api
+https://hplussport.com/api/products 
+
+fetch products to array and display
+whenever indexOf => products
+
+here we cannot use computed - not if we have to call an api.    
+                            cause it needs to return a value for products
+                            immediately when invoked so can't wait for the
+                            api response
+
+
+––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+ -->
+<!DOCTYPE html>
+
+<script type="text/javascript" src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="https://hplussport.com/api/products"></script>
+ -->
+
+<div id="app">
+    <p>
+        Got a question for our vt-agt?
+    </p>
+    <input type="text" v-model ="question">
+    this is response: <br/><br/>
+    <!--/. watch for product -->
+    {{response}}
+
+    <ul>
+        <li v-for="product in products">{{product.name}}</li>
+    </ul>
+</div>
+
+<script>
+    var vm = new Vue({
+       el: '#app',
+       data: {
+
+            question: '',
+            response: '',
+            products: []
+            
+       },
+
+       watch: {
+            question: function(q) {
+                //passing q to get the latest value instead of question
+                if(q.indexOf('products') > -1) {
+                    this.response = "Sure, I can list the products for you";
+                    $.getJSON('https://hplussport.com/api/products')
+                        .done(function(data) {
+                            //refers to the instance
+                            vm.products = data;  
+                        });
+                }//if
+                else {
+                    this.response = "Sorry, dont understand your question";
+                    //reset product to an empty array
+                    this.products = [];
+                }
+
+            }//questionfn
+       }
+       
+    });
+    
+   
+    
+</script>

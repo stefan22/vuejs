@@ -402,6 +402,15 @@ ex: to create a full name property out of firstname and lastname
 ```
 
 
+## watch
+
+- properties we would like to watch in response to changes.
+- asynchronous tasks in response to a property change
+
+> cannot use computed to call an api, it needs to be watch cause some
+> value would have to be immediately return and can't wait for api response.
+
+
 
 
 
