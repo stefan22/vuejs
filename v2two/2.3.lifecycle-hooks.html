@@ -1,0 +1,121 @@
+<!-- 
+––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+ each lifecycle hook response to an event 
+
+ this.question use here to load initial data asynchronously
+
+
+––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+ -->
+<!DOCTYPE html>
+
+<script type="text/javascript" src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<div id="app">
+    <p>
+        Got a question for our vt-agt?
+    </p>
+    <input type="text" v-model ="question">
+    this is response: <br/><br/>
+    <!--/. watch for product -->
+    {{response}}
+
+    <ul>
+        <li v-for="product in products">{{product.name}}</li>
+    </ul>
+</div>
+
+<script>
+    
+    var vm = new Vue({
+
+        el: '#app',
+        data: {
+            question: '',
+            response: '',
+            products: []
+
+        },//data
+
+        beforeCreate: function() {
+            console.log('beforeCreate');
+
+
+
+        },//beforeCreate
+
+        created: function() {
+            console.log('created');
+            this.question = "A default question about products";
+
+
+        },//created
+
+        beforeMount: function() {
+            console.log('beforeMount');
+
+
+        },//beforeMount
+
+        mounted: function() {
+            console.log('mounted');
+
+
+        },//mounted
+
+        beforeUpdate: function() {
+            console.log('beforeUpdate');
+
+
+        },//beforeUpdate
+
+        updated: function() {
+            console.log('updated');
+
+
+        },//updated
+
+        beforeDestroy: function() {
+            console.log('beforeDestroy');
+
+
+        },//beforeDestroy
+
+        destroyed: function() {
+            console.log('destroyed');
+
+        },//destroyed
+
+        watch: {
+            question: function(q) {
+                //passing q to get the latest value instead of question
+                if(q.indexOf('products') > -1) {
+                    console.log('API call');
+                    this.response = "Sure, I can list the products for you";
+                    $.getJSON('https://hplussport.com/api/products')
+                        .done(function(data) {
+                            console.log('API response');
+                            //refers to the instance
+                            vm.products = data;  
+                        });
+                }//if
+                else {
+                    this.response = "Sorry, dont understand your question";
+                    //reset product to an empty array
+                    this.products = [];
+                }
+
+            }//questionfn
+       }//watch
+
+
+
+
+    }); //vm
+       
+    
+   
+    
+</script>

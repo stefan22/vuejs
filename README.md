@@ -411,6 +411,70 @@ ex: to create a full name property out of firstname and lastname
 > value would have to be immediately return and can't wait for api response.
 
 
+## lifecycle hooks
+
+- a view instance exposes a number of lifecycle hooks that we can use in order
+  to execute custom code in response to certain events during initialization,
+  updates and destruction.
+
+- beforeCreate hook is triggered before the instance is initalized and any
+  data is processed
+
+- created hook is called after the properties are configured, but before the
+  instance has been mounted to the DOM
+
+- beforeMount hook is called when the template is compiled and ready to be
+  inserted to the DOM
+
+- Mounted hook is called when the template is inserted into the DOM as
+  a replacement for the element.
+
+- beforeUpdate hook triggered whenever data changes
+
+- Updated hook runs after re-rendering to reflect the changes
+
+- beforeDestroy and Destroyed events are raised whenever vm.$destroy is called
+
+
+> to destroy an instance =>. vm$destroy();
+
+
+## Vue components
+- they provide a way to encapsulate data and behavior making them easily
+  reusable
+
+- to add a custom component to a page -> do this by adding an element to our
+  template with a custom tag name that we register and define
+
+- a component can be global - avail for any vue instance - or local
+ex
+    <global-component></global-component>
+
+    // we can have vue replace this tag at runtime with any markup we choose
+    // but one important rule is that the markup that replaces it must have
+    // a single root element that wraps all other elements
+
+
+> Register a global component by calling Vue.component and
+> passing the custom tag, followed by an Options object and
+> before the call to new Vue so it doesn't mount the instance
+
+ex.
+registered a component with an option object with template as property
+
+    Vue.component('global-component', {template:'<div></div>'})
+
+
+- Components are very useful for working with data, but they can't    
+
+- the data property in a component is going to have a function assigned to it.
+
+- components are very similar to vue instances and can use all the same life
+  cycle hooks. They can also have methods
+
+
+
+
 
 
 

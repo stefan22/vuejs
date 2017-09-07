@@ -1,0 +1,74 @@
+<!-- 
+––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+ Register a global component by calling Vue.component and
+ passing the custom tag, followed by an Options object and
+ before the call to new Vue so it doesn't mount the instance
+
+
+––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+ -->
+
+<!DOCTYPE html>
+
+<script type="text/javascript" src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+
+<div id="app">hello
+
+    <global-component></global-component>
+    <local-component></local-component>
+    <local-component></local-component>
+    
+</div>
+
+<script>
+    Vue.component('global-component', {
+        //vue replaces custom tag name with this
+        template: '<div>a global component</div>'
+
+    });
+    // leaving out custom tag name cause going to register it as a local
+    // instance-specific component using components property
+    var localComponent = {
+        template: '<div @click="showNum()">\
+                        a local component\
+                        <div>number: {{num}}</div>\
+                   </div>',
+
+        data: function() {
+            return {
+                num:Math.random()
+            };
+        },
+
+        methods: { 
+            showNum: function() {
+                alert('My number is ' + this.num);
+            }//showNum
+
+        }
+
+    };//localComponent
+
+
+    new Vue({
+       el: '#app',
+       data: {
+           num: 42
+       },
+
+       components: {//not registered like the other one
+          'local-component': localComponent
+       }
+    });
+</script>
+
+<style>
+    div#app {
+        border: none;
+    }
+    div {
+        border: solid 2px black;
+        margin-bottom: 20px;
+        padding: 10px;
+    }
+</style>
