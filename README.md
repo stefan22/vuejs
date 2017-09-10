@@ -509,10 +509,26 @@ from the parent template.
     * if you got more than one slot then you'll have to name them.
 ```
 
+## using webpack module bundler
+> vue-cli to configure webpack
+
+- separating components into individual files and processing them
+- some advantages to using single-file components instead of just declaring them
+  in javascript along:
+    - syntax highlighting - using js strings to define templates can be a bit hard to read
+    - single-file components have the same color coding and auto-completion as html
+    - use new javascript features es6 or es5 including modules to avoid scope issues and
+      without worrying about browser compatibility
+    - component specific styling for css
+    - hot module replacement w/webpack - which will recompile components when we make a change
+      to the code and update the page automatically without refresh
 
 
-
-
+- @vue spa initial setup at last :boom:
+  + it requires vue-cli installed global
+  + npm runs dependencies
+  + vue init puts together, and run local server env
+  + and u can even do npm run build when ur done
 
 
 
