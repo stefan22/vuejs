@@ -472,9 +472,42 @@ registered a component with an option object with template as property
 - components are very similar to vue instances and can use all the same life
   cycle hooks. They can also have methods
 
+## components properties made more powerful
+by allowing the parent view instance to provide initial properties to
+each component instance.
+
+
+## to add additional content to a component
+ 
+ex (adding child elements between the components starting and ending tags)
+
+    done by using slot tags
+        ex:
+            <slot name="top">this will be default content</slot>
+
+        Also we can add default content to a slot by including it between the slot
+        tags (in Vue.component, assuming there's no content btw tags)    
+
+        <p slot="top">Everything on sale</p> //will only appears if 'this will..' not there
 
 
 
+Vue 2.1 => theres a new slot called 'scoped slot'
+it allows slot content to be specified as a template that can receive it own props
+from the parent template.
+
+  ex. here slot uses template tags in html (this here is a little confusing atm)
+
+```
+    <product-list-flexible :products="theProducts" the-title="Custom layout">
+       <template scope="props">{{props.product.name}}</template> 
+    </product-list-flexible>
+
+    //Vue.component then uses regular <slot></slot> tags with whatever binding prop
+    here be => :product="product"  (in products)
+
+    * if you got more than one slot then you'll have to name them.
+```
 
 
 

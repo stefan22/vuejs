@@ -1,0 +1,157 @@
+<!-- 
+how to add additional content to a component
+ex (adds child elements between the components starting and ending tags)
+
+    done by using slot tags
+        ex:
+            <slot></slot>
+
+        Also we can add default content to a slot by including it between the slot
+        tags    
+
+added flexible slot, that sort of replaces what previously product-list-item was doing
+
+note: more than one slot then you'll need to name them
+
+
+––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+-->
+ <!DOCTYPE html>
+
+<script type="text/javascript" src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<div id="app">stefano
+
+    <product-list the-title="Shop our great line of products" :products="theProducts">
+        <p slot="top">Everything on sale</p>
+        <p slot="bottom">Not anymore</p>
+    </product-list>
+
+    <product-list-flexible :products="theProducts" the-title="Custom layout">
+       <template scope="props"><strong>{{props.product.name}}</strong> - {{props.product.description}}
+       </template> 
+    </product-list-flexible>
+
+    
+    
+</div>
+
+<script>
+    Vue.component('product-list', {
+        template: '<div class="product-list"><h2>{{theTitle}}</h2>\
+                    <slot name="top">backup content - it only appear if theres no content</slot>\
+                    <ul>\
+                      <product-list-item v-for="product in products" :product="product">\
+                      </product-list-item>\
+                      <li><slot name="bottom">not no more</slot>\</li>\
+                    </ul>\
+                    </div>',
+
+        props: ['theTitle','products']     //binded produts to theProducts
+                  
+    });//component
+
+    Vue.component('product-list-flexible', {
+        template: '<div class="product-list"><h2>{{theTitle}}</h2>\
+                    <li v-for="product in products">\
+                    <slot :product="product"></slot>\
+                    </li>\
+                    </div>',
+
+        props: ['theTitle','products']     //binded produts to theProducts
+                  
+    });//component
+
+
+    Vue.component('product-list-item',{
+        template:
+                    '<li>\
+                        <img :src="product.image" />\
+                        <p><strong>{{product.name}}</strong></p>\
+                        <p>{{product.description}}</p>\
+                    </li>',
+
+        props: ['product']
+
+
+        
+
+
+
+    }); //list-item
+
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            theProducts: [],
+            listType: 'product-list'
+
+        },//data
+
+        //using the created hook to call api
+        created: function() {
+            $.getJSON('http://hplussport.com/api/products')
+                .done(function(data) {
+                    vm.theProducts = data;
+                });
+        
+        }//created
+
+
+    });
+
+
+
+
+
+    
+    
+    
+
+
+
+
+
+
+
+</script>
+
+<style>
+    .product-list h2 {
+        margin-bottom: 40px;
+    }
+    .product-list ul img {
+        float: left;
+        width:300px;
+        clear: both;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    p {
+        width: 75%;
+        display: inline-block;
+    }
+
+    .product-list img.small {
+        width: 100px;
+    }
+
+    li {
+        overflow:auto;
+    }
+
+    ul li:last-child, .product-list > p {
+        background-color: black;
+        color:white;
+        width:150px;
+        padding:5px;
+        text-align: center;
+    }
+
+
+</style>

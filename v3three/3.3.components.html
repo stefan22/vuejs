@@ -1,0 +1,116 @@
+<!-- 
+––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+* creating a child component out of the list item
+==================================================
+
+A component doesn't have access to data in the parent view instance 
+
+example of making components more powerful by allowing the parent view instance
+to provide initial properties to each component instance
+
+note:
+
+    {{theTitle}}        //that would not work
+
+    {{the-title}}       //that would work  (html attributes are case insensitive)
+
+* creating a child component out of the list item
+––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+-->
+ <!DOCTYPE html>
+
+<script type="text/javascript" src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<div id="app">stefano
+
+    <product-list :products="theProducts" the-title="Show our award winning product line"></product-list>
+    
+</div>
+
+<script>
+    Vue.component('product-list', {
+        template: '<div class="product-list"><h2>{{theTitle}}</h2>\
+                    <ul>\
+                        <product-list-item v-for="product in products" :product="product">\
+                        </product-list-item></ul>\
+                    </div>',
+
+        props: ['theTitle','products']     //binded produts to theProducts
+                  
+    });//component
+
+    Vue.component('product-list-item',{
+        template:
+                    '<li>\
+                        <img :src="product.image" />\
+                        <p><strong>{{product.name}}</strong></p>\
+                        <p>{{product.description}}</p>\
+                    </li>',
+
+        props: ['product']
+
+
+        
+
+
+
+    }); //list-item
+
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            theProducts: []
+
+        },//data
+
+        //using the created hook to call api
+        created: function() {
+            $.getJSON('http://hplussport.com/api/products')
+                .done(function(data) {
+                    vm.theProducts = data;
+                });
+        
+        }//created
+
+
+    });
+
+
+
+
+
+    
+    
+    
+
+
+
+
+
+
+
+</script>
+
+<style>
+    .product-list h2 {
+        margin-bottom: 40px;
+    }
+    .product-list ul img {
+        float: left;
+        width:300px;
+        clear: both;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    p {
+        width: 75%;
+        float: left;
+    }
+
+
+</style>

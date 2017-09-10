@@ -1,0 +1,151 @@
+<!-- 
+––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+* swapping components: show less and show more buttons
+======================================================
+
+A component doesn't have access to data in the parent view instance 
+
+example of making components more powerful by allowing the parent view instance
+to provide initial properties to each component instance
+
+Another way to do 'product-list' components is by using a generic component tag:
+
+    ex
+        <component is="product-list"> instead of <product-list>
+
+
+
+
+––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+-->
+ <!DOCTYPE html>
+
+<script type="text/javascript" src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<div id="app">stefano
+
+    <!-- <product-list :products="theProducts" the-title="Show our award winning product line"></product-list> -->
+
+    <!-- binding to list type......storing the name of the component in a data property called 'listType' and dynamically bind to it with :is -->
+
+    <button v-if="listType == 'product-list'" @click="listType='product-list-simple'">   
+        Show less detail
+    </button>
+    <button v-else @click = "listType = 'product-list'">Show more detail
+    </button>
+
+    <component :is="listType" :products="theProducts" the-title="Show our award winning product line"></component>
+
+    
+    
+</div>
+
+<script>
+    Vue.component('product-list', {
+        template: '<div class="product-list"><h2>{{theTitle}}</h2>\
+                    <ul>\
+                        <product-list-item v-for="product in products" :product="product">\
+                        </product-list-item></ul>\
+                    </div>',
+
+        props: ['theTitle','products']     //binded produts to theProducts
+                  
+    });//component
+
+    //simpler list
+    Vue.component('product-list-simple', {
+        template: '<div class="product-list"><h2>{{theTitle}}</h2>\
+                    <ul>\
+                        <li v-for="product in products">\
+                            <img :src="product.image" class="small">{{product.name}}\
+                        </li>\
+                    </div>',
+
+        props: ['theTitle','products']     //binded produts to theProducts
+                  
+    });//component
+
+    Vue.component('product-list-item',{
+        template:
+                    '<li>\
+                        <img :src="product.image" />\
+                        <p><strong>{{product.name}}</strong></p>\
+                        <p>{{product.description}}</p>\
+                    </li>',
+
+        props: ['product']
+
+
+        
+
+
+
+    }); //list-item
+
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            theProducts: [],
+            listType: 'product-list'
+
+        },//data
+
+        //using the created hook to call api
+        created: function() {
+            $.getJSON('http://hplussport.com/api/products')
+                .done(function(data) {
+                    vm.theProducts = data;
+                });
+        
+        }//created
+
+
+    });
+
+
+
+
+
+    
+    
+    
+
+
+
+
+
+
+
+</script>
+
+<style>
+    .product-list h2 {
+        margin-bottom: 40px;
+    }
+    .product-list ul img {
+        float: left;
+        width:300px;
+        clear: both;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    p {
+        width: 75%;
+        float: left;
+    }
+
+    .product-list img.small {
+        width: 100px;
+    }
+
+    li {
+        overflow:auto;
+    }
+
+
+</style>
